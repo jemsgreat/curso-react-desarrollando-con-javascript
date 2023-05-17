@@ -1,11 +1,16 @@
-import logo from './logo.svg';
 import './App.css';
 import Header from './componentes/Header/Header';
 
 function App() {
   return (
-    <div className="App">
-      
+    <div>
+      {/*forma 1 de llamar componente o funcion
+      {Header()}
+      forma 2 de llamar componente o funcion
+      <Header></Header>
+      //forma 3 de llamar componente o funcion*/}
+      <Header />
+      {/* comentado o quitado para limpiar el Ap no lo necesitamos
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -19,7 +24,7 @@ function App() {
         >
           Aprende React
         </a>
-      </header>
+    </header>*/}
     </div>
   );
 }
