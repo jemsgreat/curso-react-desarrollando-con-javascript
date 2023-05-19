@@ -1,5 +1,6 @@
 import './App.css';
 import Header from './componentes/Header/Header';
+import Formulario from './componentes/formulario/Formulario';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           Aprende React
         </a>
     </header>*/}
+      <Formulario />    
     </div>
   );
 }
