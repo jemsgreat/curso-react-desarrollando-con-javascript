@@ -1,8 +1,19 @@
 import './App.css';
 import Header from './componentes/Header/Header';
 import Formulario from './componentes/Formulario/Formulario';
-
+import MiOrg from './componentes/MiOrg';
+import { useState } from 'react';
 function App() {
+
+  const [mostrarFormulario, actualizarMostrar] = useState(true)
+
+  //ternario --> condicion ? seMestra : noSeMuestra
+  //condicion && seMuestra   // este es otro modo en vez del ternario hay que estudiar
+
+  const cambiarMostrar = () => {
+    actualizarMostrar(!mostrarFormulario)
+  }
+
   return (
     <div>
       {/*forma 1 de llamar componente o funcion
@@ -26,7 +37,9 @@ function App() {
           Aprende React
         </a>
     </header>*/}
-      <Formulario />    
+      {/*{mostrarFormulario === true ? <Formulario /> : <div></div>}*/}  {/*este es un modo */}
+      {mostrarFormulario && <Formulario />}                        {/*este es otro un modo */}
+      <MiOrg cambiarMostrar={cambiarMostrar} />  {/*aqui agregamos el nuevo componente MiOrg*/}   
     </div>
   );
 }
