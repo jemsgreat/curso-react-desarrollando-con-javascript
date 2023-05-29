@@ -1,4 +1,5 @@
 import './App.css';
+import { v4 as uuid } from 'uuid';
 import Header from './componentes/Header/Header';
 import Formulario from './componentes/Formulario/Formulario';
 import MiOrg from './componentes/MiOrg';
@@ -12,42 +13,56 @@ function App() {
 
   const [mostrarFormulario, actualizarMostrar] = useState(true)
   const [colaboradores, actualizarColaboradores] = useState([{
-    
+    id: uuid(),
     nombre: "Harland Lohora",
     puesto: "Instructor",
     foto: "https://github.com/harlandlohora.png",
     equipo: "Front End",
   },
-  { nombre:"Christian Velasco",
+  { id: uuid(),
+    nombre:"Christian Velasco",
     puesto: "Head de Alura e instructor",
     foto: "https://github.com/christianpva.png",
     equipo: "Devops",
   },
-  { nombre:"Genesys Rondón",
+  { id: uuid(),
+    nombre:"Genesys Rondón",
     puesto: "Desarrollarora de software e instructora",
     foto: "https://github.com/genesysaluralatam.png",
     equipo: "Programación",
   },
-  { nombre:"Jeanmarie Quijada",
+  { id: uuid(),
+    nombre:"Jeanmarie Quijada",
     puesto: "Instructora en Alura Latam",
     foto: "https://github.com/JeanmarieAluraLatam.png",
     equipo: "UX y Diseño",
   },
-  { nombre:"Jose Gonzales",
+  { id: uuid(),
+    nombre:"Jose Gonzales",
     puesto: "Dev. FullStack",
     foto: "https://github.com/JoseDarioGonzalezCha.png",
     equipo: "Data Science",
   },
-  { nombre:"Jhonattan Mercado Senior",
+  { id: uuid(),
+    nombre:"Jhonattan Mercado Senior",
     puesto: "Estudiante en Alura Latam",
     foto: "https://github.com/jemsgreat.png",
     equipo: "Innovación y Gestión",
   },
-  { nombre:"Yina Cardenas Acosta",
+  { 
+    id: uuid(),
+    nombre:"Yina Cardenas Acosta",
     puesto: "Estudiante en Alura Latam",
     foto: "https://scontent.fvup1-1.fna.fbcdn.net/v/t39.30808-6/328930715_506267641579878_1793773059635841357_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=RoIh-9O976MAX-GzBbn&_nc_ht=scontent.fvup1-1.fna&oh=00_AfB9-kZtJUCTBlQOvXCeaYuvEdVfNIpFvVrjsFSRHjo3Aw&oe=6471800D",
     equipo: "Móvil",
-  }
+  },
+  {  
+    id: uuid(),
+    nombre: "Juanito Pepito",
+    puesto: "Instructor",
+    foto: "https://github.com/harlandlohora.png",
+    equipo: "Front End",
+  },
 
 
 
@@ -55,11 +70,13 @@ function App() {
 
   const [equipos, actualizarEquipos] = useState([
     {
+      id: uuid(),
       titulo:"Programación",
       colorPrimario:"#57C278",
       colorSecundario:"#D9F7E9"
     },
     {
+      id: uuid(),
       titulo:"Front End",
       colorPrimario:"#82CFFA",
       colorSecundario:"#E8F8FF"
@@ -70,21 +87,25 @@ function App() {
       colorSecundario:"#F0F8E2"
     },
     {
+      id: uuid(),
       titulo:"Devops",
       colorPrimario:"#E06B69",
       colorSecundario:"#FDE7E8"
     },
     {
+      id: uuid(),
       titulo:"UX y Diseño",
       colorPrimario:"#DB6EBF",
       colorSecundario:"#FAE9F5"
     },
     {
+      id: uuid(),
       titulo:"Móvil",
       colorPrimario:"#FFBA05",
       colorSecundario:"#FFF5D9"
     },
     {
+      id: uuid(),
       titulo:"Innovación y Gestión",
       colorPrimario:"#FF8A29",
       colorSecundario:"#FFEEDF"
@@ -104,24 +125,31 @@ function App() {
     console.log("nuevo colaborador", colaborador)
     //Spread operator (...any) se usa para copiar aqui el objeto colaboradores
     actualizarColaboradores([...colaboradores, colaborador])
-
   }
 
   /* eliminar colaborador */
-  const eliminarColaborador = () => {
-    console.log("Eliminar Colaborador")
+  const eliminarColaborador = (id) => {
+    console.log("Eliminar Colaborador", id)
+    const nuevosColaboradores = colaboradores.filter((colaborador) => colaborador.id !== id)
+    actualizarColaboradores(nuevosColaboradores)
   }
 
   /* actualizar color de equipo */
-  const actualizarColor = (color, titulo) => {
-    console.log("Actualizar", color, titulo)
-    const equiposActualizados=equipos.map((equipo) => {
-      if (equipo.titulo === titulo) {
+  const actualizarColor = (color, id) => {
+    console.log("Actualizar", color, id)
+    const equiposActualizados = equipos.map((equipo) => {
+      if (equipo.id === id) {
         equipo.colorPrimario = color
       }
       return equipo 
     })
     actualizarEquipos(equiposActualizados)
+  }
+
+  //Crear equipo
+  const crearEquipo = (nuevoEquipo) => {
+    console.log(nuevoEquipo)
+    actualizarEquipos([...equipos, { ...nuevoEquipo, id: uuid() }])
   }
 
   return (
@@ -152,6 +180,7 @@ function App() {
         mostrarFormulario && <Formulario 
           equipos={equipos.map((equipo) => equipo.titulo)}
           registrarColaborador={registrarColaborador}
+          crearEquipo={crearEquipo}
         />
       }                        {/*este es otro un modo */}
       <MiOrg cambiarMostrar={cambiarMostrar} />  {/*aqui agregamos el nuevo componente MiOrg*/}   
