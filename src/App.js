@@ -160,6 +160,7 @@ function App() {
     actualizarEquipos([...equipos, { ...nuevoEquipo, id: uuid() }])
   }
 
+  //like logica
   const like = (id) => {
     console.log("like", id)
     const colaboradoresActualizados = colaboradores.map((colaborador) => {
