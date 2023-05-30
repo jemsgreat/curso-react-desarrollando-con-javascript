@@ -55,22 +55,6 @@ function App() {
     equipo: "Innovación y Gestión",
     fav: false,
   },
-  { 
-    id: uuid(),
-    nombre:"Yina Cardenas Acosta",
-    puesto: "Estudiante en Alura Latam",
-    foto: "https://scontent.fvup1-1.fna.fbcdn.net/v/t39.30808-6/328930715_506267641579878_1793773059635841357_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=RoIh-9O976MAX-GzBbn&_nc_ht=scontent.fvup1-1.fna&oh=00_AfB9-kZtJUCTBlQOvXCeaYuvEdVfNIpFvVrjsFSRHjo3Aw&oe=6471800D",
-    equipo: "Móvil",
-    fav: false,
-  },
-  {  
-    id: uuid(),
-    nombre: "Juanito Pepito",
-    puesto: "Instructor",
-    foto: "https://github.com/harlandlohora.png",
-    equipo: "Front End",
-    fav: false,
-  },
 
 
 
