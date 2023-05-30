@@ -18,36 +18,42 @@ function App() {
     puesto: "Instructor",
     foto: "https://github.com/harlandlohora.png",
     equipo: "Front End",
+    fav: true,
   },
   { id: uuid(),
     nombre:"Christian Velasco",
     puesto: "Head de Alura e instructor",
     foto: "https://github.com/christianpva.png",
     equipo: "Devops",
+    fav: false,
   },
   { id: uuid(),
     nombre:"Genesys Rondón",
     puesto: "Desarrollarora de software e instructora",
     foto: "https://github.com/genesysaluralatam.png",
     equipo: "Programación",
+    fav: false,
   },
   { id: uuid(),
     nombre:"Jeanmarie Quijada",
     puesto: "Instructora en Alura Latam",
     foto: "https://github.com/JeanmarieAluraLatam.png",
     equipo: "UX y Diseño",
+    fav: false,
   },
   { id: uuid(),
     nombre:"Jose Gonzales",
     puesto: "Dev. FullStack",
     foto: "https://github.com/JoseDarioGonzalezCha.png",
     equipo: "Data Science",
+    fav: false,
   },
   { id: uuid(),
     nombre:"Jhonattan Mercado Senior",
     puesto: "Estudiante en Alura Latam",
     foto: "https://github.com/jemsgreat.png",
     equipo: "Innovación y Gestión",
+    fav: false,
   },
   { 
     id: uuid(),
@@ -55,6 +61,7 @@ function App() {
     puesto: "Estudiante en Alura Latam",
     foto: "https://scontent.fvup1-1.fna.fbcdn.net/v/t39.30808-6/328930715_506267641579878_1793773059635841357_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=RoIh-9O976MAX-GzBbn&_nc_ht=scontent.fvup1-1.fna&oh=00_AfB9-kZtJUCTBlQOvXCeaYuvEdVfNIpFvVrjsFSRHjo3Aw&oe=6471800D",
     equipo: "Móvil",
+    fav: false,
   },
   {  
     id: uuid(),
@@ -62,6 +69,7 @@ function App() {
     puesto: "Instructor",
     foto: "https://github.com/harlandlohora.png",
     equipo: "Front End",
+    fav: false,
   },
 
 
@@ -152,6 +160,17 @@ function App() {
     actualizarEquipos([...equipos, { ...nuevoEquipo, id: uuid() }])
   }
 
+  const like = (id) => {
+    console.log("like", id)
+    const colaboradoresActualizados = colaboradores.map((colaborador) => {
+      if (colaborador.id === id) {
+        colaborador.fav = !colaborador.fav
+      }
+      return colaborador
+    })
+    actualizarColaboradores(colaboradoresActualizados)
+  }
+
   return (
     <div>
       {/*forma 1 de llamar componente o funcion
@@ -194,6 +213,7 @@ function App() {
           colaboradores={colaboradores.filter(colaborador => colaborador.equipo === equipo.titulo)} 
           eliminarColaborador={eliminarColaborador}
           actualizarColor={actualizarColor}
+          like={like}
         />
         )
       }  
